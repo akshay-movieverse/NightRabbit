@@ -11,4 +11,3 @@ class Api::VideosController < ApplicationController
     render json: @video
   end
 end
-  
