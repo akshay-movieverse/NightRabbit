@@ -1,10 +1,10 @@
 import axiosInstance from './axiosInstance';
 
 // Fetch all videos
-export const getAllVideos = async (page) => {
+export const getAllVideos = async (page, query) => {
   try {
     const response = await axiosInstance.get('/api/videos', {
-      params: { page },
+      params: { page, query },
     });
     return response.data; // Return list of videos
   }  catch (error) {
