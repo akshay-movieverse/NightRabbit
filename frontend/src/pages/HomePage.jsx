@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { getAllVideos } from '../api/videoApi';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { getVideos } from '../api/videoApi';
 import VideoCard from '../components/VideoCard';
 import Header from '../components/Header';
 import _ from "lodash";
@@ -12,13 +12,12 @@ const HomePage = () => {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [query, setQuery] = useState(''); 
-  const initialFetchDone = useRef(false);
 
-  // Fetch videos based on the current page
-  const fetchVideos = async (pageToFetch, searchQuery = "") => {
+  // Fetch videos based on the current page and search query
+  const fetchVideos = useCallback(async (pageToFetch, searchQuery = "") => {
     try {
       setLoading(true);
-      const data = await getAllVideos(pageToFetch, searchQuery);
+      const data = await getVideos(pageToFetch, searchQuery);
       if (pageToFetch === 1) {
         setVideos(data); // Replace videos on new search
       } else {
@@ -30,12 +29,10 @@ const HomePage = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  // Trigger fetching videos on page change or on the initial load
   useEffect(() => {
-    if (!initialFetchDone.current || (hasMore && (page > 1 || query))) {
-      initialFetchDone.current = true;
+    if (hasMore) {
       fetchVideos(page, query);
     }
   }, [page, query, hasMore]);
@@ -53,11 +50,11 @@ const HomePage = () => {
     }, 300)
   ).current;
 
-  const handleSearchSubmit = (searchQuery) => {
+  const handleSearchSubmit = useCallback((searchQuery) => {
     setQuery(searchQuery);
     setPage(1);
     setHasMore(true);
-  };
+  }, []);
 
   // Add scroll event listener
   useEffect(() => {

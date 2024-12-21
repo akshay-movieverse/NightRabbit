@@ -1,7 +1,7 @@
 import axiosInstance from './axiosInstance';
 
 // Fetch all videos
-export const getAllVideos = async (page, query) => {
+export const getVideos = async (page, query) => {
   try {
     const response = await axiosInstance.get('/api/videos', {
       params: { page, query },
@@ -21,15 +21,3 @@ export const getVideoById = async (id) => {
     throw error;
   }
 };
-
-// Search videos based on a query
-// export const searchVideos = async (query) => {
-//   try {
-//     const response = await axiosInstance.get(`/videos/search`, {
-//       params: { query },
-//     });
-//     return response.data; // Return search results
-//   } catch (error) {
-//     throw error;
-//   }
-// };
