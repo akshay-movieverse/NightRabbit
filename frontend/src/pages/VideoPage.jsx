@@ -34,15 +34,15 @@ const VideoPage = () => {
     } finally {
       setLoading(false);
     }
-  }, [videoId]);
+  }, []);
 
   useEffect(() => {
     fetchVideoDetails();
     fetchSuggestions(1);
-  }, [videoId]);
+  }, []);
 
   useEffect(() => {
-    if (hasMore) fetchSuggestions(page);
+    if (page > 1 && hasMore) fetchSuggestions(page);
   }, [page]);
 
   // Throttled scroll handler to detect when the user reaches the bottom

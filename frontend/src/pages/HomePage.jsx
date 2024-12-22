@@ -34,11 +34,11 @@ const HomePage = () => {
   useEffect(() => {
     setPage(1);
     setHasMore(true);
-    fetchVideos(page, query);
+    fetchVideos(1, query);
   }, [query]);
 
   useEffect(() => {
-    if (hasMore) {
+    if (page > 1 && hasMore) {
       fetchVideos(page, query);
     }
   }, [page, hasMore]);
