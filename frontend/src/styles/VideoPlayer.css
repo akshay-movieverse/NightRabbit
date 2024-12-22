@@ -1,14 +1,3 @@
-#player {
-  width: 100%;
-  max-width: 1200px;
-  height: auto;
-  border-radius: 8px;
-}
-
 .video-player {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  width: 90%;
+  width: 100%;
 }

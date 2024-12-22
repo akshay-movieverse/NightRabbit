@@ -3,8 +3,9 @@ import { useParams } from 'react-router-dom';
 import VideoPlayer from '../components/VideoPlayer';
 import VideoGrid from '../components/VideoGrid';
 import _ from "lodash";
-
 import { getVideoById, getVideos } from '../api/videoApi';
+
+import '../styles/VideoPage.css';
 
 const VideoPage = () => {
   const { videoId } = useParams(); 
@@ -76,9 +77,10 @@ const VideoPage = () => {
       <div className="video-page">
         <div className="video-player-container">
           <VideoPlayer video={video} />
+          <h1 className="video-play-title">{video?.title}</h1>
         </div>
 
-        <h2>Suggestions</h2>
+        <h2>More Videos</h2>
         <VideoGrid videos={suggestedVideos} />
         {loading && <p>Loading more...</p>}
       </div>

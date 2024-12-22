@@ -30,8 +30,6 @@ const VideoPlayer = ({ video, playerId = "player" }) => {
     const initializePlayer = () => {
       if (window.Playerjs) {
         const fileString = video?.video_data?.map(item => `[${item.resolution}]${item.link}`)?.join('|');
-        debugger
-
         new window.Playerjs({ id: playerId, file: fileString });
       }
     };
