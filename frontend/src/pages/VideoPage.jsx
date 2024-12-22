@@ -12,11 +12,14 @@ const VideoPage = () => {
   const [suggestedVideos, setSuggestedVideos]= useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [videoLoading, setVideoLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
 
   const fetchVideoDetails = async () => {
+    setVideoLoading(true)
     const data = await getVideoById(videoId);
     setVideo(data);
+    setVideoLoading(false)
   };
 
   const fetchSuggestions = useCallback(async (pageToFetch) => {
@@ -63,6 +66,10 @@ const VideoPage = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll); // Cleanup
   }, [handleScroll]);
+
+  if (videoLoading) {
+    return <div>Video Loading...</div>;
+  }
 
   return (
      <>
