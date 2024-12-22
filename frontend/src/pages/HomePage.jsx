@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { getVideos } from '../api/videoApi';
-import VideoCard from '../components/VideoCard';
+import VideoGrid from '../components/VideoGrid';
 import _ from "lodash";
 
 import '../styles/HomePage.css';
@@ -65,9 +65,7 @@ const HomePage = () => {
   return (
     <>
       <div className="home-page">
-        {videos.map((video) => (
-          <VideoCard key={video.id} video={video} />
-        ))}
+        <VideoGrid videos={videos} />
         {loading && <div>Loading...</div>}
       </div>
     </>
