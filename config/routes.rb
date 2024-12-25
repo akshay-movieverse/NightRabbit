@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    resources :videos, only: [:index, :show]
+    resources :videos, only: [:index, :show] do
+      get :suggestions, on: :member
+    end
   end
 end
