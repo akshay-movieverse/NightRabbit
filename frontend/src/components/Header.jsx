@@ -21,17 +21,18 @@ const Header = ({ query, setQuery }) => {
   const handleSearch = (e) => {
     e.preventDefault();
     setQuery(localSearchquery);
+    setSuggestions([]); 
     navigate(`/?query=${localSearchquery}`);
   };
 
   const handleSuggestionClick = (suggestion) => {
-    setLocalSearchquery(suggestion.title);
-    setSuggestions([]);
     setQuery(suggestion.title);
+    setLocalSearchquery(suggestion.title)
+    setSuggestions([]);
     navigate(`/?query=${suggestion.title}`);
   };
 
-   const fetchSuggestions = useCallback(async () => {
+  const fetchSuggestions = useCallback(async () => {
     if (localSearchquery.length > 0) {
       setLoading(true);
       try {
@@ -47,7 +48,9 @@ const Header = ({ query, setQuery }) => {
   }, [localSearchquery]);
   
   useEffect(() => {
+    if(query != localSearchquery){
     fetchSuggestions()
+    }
   }, [localSearchquery]);
 
   return (
@@ -66,7 +69,9 @@ const Header = ({ query, setQuery }) => {
         {localSearchquery && (
           <div className="suggestions-list">
             {loading ? (
-              <div>Loading...</div>
+              <div className='suggestion-item'>
+                <span>Loading...</span>
+              </div>
             ) : (
               suggestions.map((suggestion) => (
                 <div
