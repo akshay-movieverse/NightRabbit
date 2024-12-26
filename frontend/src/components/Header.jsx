@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { FaSearch } from 'react-icons/fa'; // Import the search icon
 
@@ -67,7 +67,7 @@ const Header = ({ query, setQuery }) => {
 
   return (
     <header>
-      <h1>NightRabbit</h1>
+      <h1><Link to="/" className="header-link">NightRabbit</Link></h1>
       <div className="search-container">
         <form onSubmit={handleSearch}>
           <input

@@ -8,16 +8,21 @@ const alphabets = ['#', ...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
 const CategoriesPage = () => {
   const [categories, setCategories] = useState([]);
   const [selectedLetter, setSelectedLetter] = useState('#');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const fetchCategories = useCallback(async (letter) => {
+    setCategories([]);
     setSelectedLetter(letter);
+    setLoading(true)
     try {
         const response = await fetchCategoriesByAlphabet(letter);
         setCategories(response);
     } catch (error) {
         console.error('Failed to fetch categories:', error);
         setCategories([]);
+    } finally {
+      setLoading(false);
     }
    }, [selectedLetter]);
   
@@ -60,7 +65,7 @@ const CategoriesPage = () => {
             </div>
           ))
         ) : (
-          <p className="no-category">Select an alphabet to view categories.</p>
+          <p className="no-category"> {loading ? "Loading..." : "No category is available for this alphabet."}</p>
         )}
       </div>
     </div>

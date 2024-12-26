@@ -31,9 +31,10 @@
   
   .category-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
     margin-top: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    padding: 20px;
   }
   
   .category-card {
@@ -44,6 +45,17 @@
     border-radius: 8px;
     cursor: pointer;
     transition: transform 0.3s, background-color 0.3s;
+    overflow: hidden; /* Prevent content from overflowing */
+    text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+    white-space: nowrap; /* Prevent text from wrapping to the next line */
+  }
+
+  .category-card span {
+    display: inline-block;
+    max-width: 100%;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis for overflowed text */
   }
   
   .category-card:hover {

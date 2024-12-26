@@ -13,6 +13,11 @@ header h1 {
   margin: 0;
 }
 
+header h1 .header-link {
+  color: white;
+  text-decoration: none; /* Removes the underline */
+}
+
 .search-container {
   display: flex;
   flex-grow: 1;
@@ -138,7 +143,7 @@ header h1 {
 }
 
 .categories-button:hover {
-  background-color: #4caf50; /* Green color on hover */
+  background-color: #f44336; /* Green color on hover */
   color: #ffffff;
 }
 
