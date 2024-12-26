@@ -11,5 +11,9 @@ Rails.application.routes.draw do
       get :suggestions, on: :member
       get :search_suggestions, on: :collection
     end
+
+    resources :categories, only: [:index] do
+      get :videos, on: :member
+    end
   end
 end

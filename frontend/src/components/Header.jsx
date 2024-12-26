@@ -19,6 +19,10 @@ const Header = ({ query, setQuery }) => {
     navigate('/login');
   };
 
+  const handleCategoriesClick = () => {
+    navigate('/categories');
+  };
+
   const handleSearch = (e) => {
     e.preventDefault();
     setQuery(localSearchquery);
@@ -95,7 +99,14 @@ const Header = ({ query, setQuery }) => {
           </div>
         )}
       </div>
-      <button className="logout-button" onClick={() => handleLogout()}>Logout</button>
+      <div className="header-buttons">
+        <button className="categories-button" onClick={handleCategoriesClick}>
+          Categories
+        </button>
+        <button className="logout-button" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
     </header>
   );
 };

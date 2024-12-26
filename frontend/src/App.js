@@ -5,6 +5,8 @@ import LoginPage from './pages/LoginPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import Layout from './components/Layout';
 import VideoPage from './pages/VideoPage';
+import CategoriesPage from './pages/CategoriesPage';
+import CategoryPage from './pages/CategoryPage';
 
 function App() {
   return (
@@ -13,7 +15,9 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
+            <Route path="/categories" element={<CategoriesPage />}/>
             <Route path="/video/:videoId" element={<VideoPage />} />
+            <Route path="/category/:categoryId/videos" element={<CategoryPage />} />
           </Route>
         </Route>
         <Route path="/login" element={<LoginPage />} />
