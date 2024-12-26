@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { useOutletContext, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import VideoGrid from '../components/VideoGrid';
 import { getVideosByCategory } from '../api/categoryApi';
 import _ from "lodash";
 
-import '../styles/CategoryPage.css';
+import '../styles/CategoryVideosPage.css';
 
-const CategoryPage = () => {
+const CategoryVideosPage = () => {
   const { categoryId } = useParams();
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -72,4 +72,4 @@ const CategoryPage = () => {
   );
 };
 
-export default CategoryPage;
+export default CategoryVideosPage;
