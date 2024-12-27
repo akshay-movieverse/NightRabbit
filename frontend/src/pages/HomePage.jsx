@@ -33,6 +33,7 @@ const HomePage = () => {
 
   useEffect(() => {
     setPage(1);
+    setVideos([])
     setHasMore(true);
     fetchVideos(1, query);
   }, [query]);

@@ -33,6 +33,7 @@ const CategoryVideosPage = () => {
 
   useEffect(() => {
     setPage(1);
+    setVideos([])
     setHasMore(true);
     fetchVideos(1, categoryId);
   }, [categoryId]);
