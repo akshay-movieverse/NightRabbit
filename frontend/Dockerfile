@@ -2,7 +2,7 @@
 FROM node:20-slim AS builder
 
 # Set the working directory
-WORKDIR /fapp
+#WORKDIR /fapp
 
 # Copy package files into the working directory
 COPY package.json package-lock.json ./
