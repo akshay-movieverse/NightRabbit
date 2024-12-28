@@ -28,7 +28,7 @@ COPY . .
 #RUN bundle exec rake assets:precompile
 
 # Expose port 3000
-EXPOSE 3000
+EXPOSE 3001
 
 # Start the Rails server
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
