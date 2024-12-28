@@ -25,7 +25,7 @@ RUN bundle install --without development test
 COPY . .
 
 # Precompile assets
-RUN bundle exec rake assets:precompile
+#RUN bundle exec rake assets:precompile
 
 # Expose port 3000
 EXPOSE 3000
