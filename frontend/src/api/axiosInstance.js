@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://192.168.1.50:3001'; // API URL for development or production
+const API_URL = process.env.REACT_APP_API_URL || 'https://nightapi.skynimbus.online'; // API URL for development or production
 
 const axiosInstance = axios.create({
   baseURL: API_URL,
