@@ -20,4 +20,4 @@ services:
     ports:
       - "3001:3001"
     volumes:
-      - ./frontend:/app
+      - ./frontend:/fapp
