@@ -9,7 +9,7 @@ services:
     volumes:
       - .:/app
     environment:
-      - DATABASE_URL=postgres://postgres:YcZHpZJUmkqSef0O8XYOXB3C4AAIuK1UGC4i0Axr5GAOKP4jKDMeXqgkn60oGHQg@ucw0o0wc8ko0ocs0w0g00sok:5432/postgres
+      - DATABASE_URL=postgres://postgres:YcZHpZJUmkqSef0O8XYOXB3C4AAIuK1UGC4i0Axr5GAOKP4jKDMeXqgkn60oGHQg@192.168.1.50:5432/postgres
     depends_on:
       - frontend
 
