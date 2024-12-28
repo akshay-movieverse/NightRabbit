@@ -22,3 +22,11 @@ services:
     volumes:
       - ./frontend:/frontend
 
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: YcZHpZJUmkqSef0O8XYOXB3C4AAIuK1UGC4i0Axr5GAOKP4jKDMeXqgkn60oGHQg
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
