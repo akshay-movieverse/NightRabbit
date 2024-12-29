@@ -15,7 +15,7 @@ class ApplicationController < ActionController::API
 
   def authenticate_user!
     token = request.headers['Authorization']&.split(' ')&.last
-
+    Rails.logger.info("[Authentication] Token: #{token}")
     if token.blank? || decoded_token.blank?
       render_unauthorized('Not Authenticated')
     else
