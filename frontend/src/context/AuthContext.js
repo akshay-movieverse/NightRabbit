@@ -15,9 +15,11 @@ export const AuthProvider = ({ children }) => {
           const response = await apiClient.get('/users/validate_token', {
             headers: { Authorization: `Bearer ${token}` },
           });
+          console.log(response.data);
           setUser(response.data.user);
           localStorage.setItem('token', token);
         } catch (error) {
+          console.log(error);
           setUser(null);
           localStorage.removeItem('token');
         }
@@ -34,8 +36,8 @@ export const AuthProvider = ({ children }) => {
 
   const login = async ({ email, password }) => {
     const response = await apiClient.post('/users/sign_in', { email, password });
-    console.log(response.data.token);
-    //localStorage.setItem('token', response.data.token);
+    //console.log(response.data.token);
+    localStorage.setItem('token', response.data.token);
     setToken(response.data.token);
     setUser(response.data.user);
   };
