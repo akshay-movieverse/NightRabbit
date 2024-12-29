@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
           setUser(response.data.user);
           localStorage.setItem('token', token);
         } catch (error) {
-          console.log(error);
+          //console.log(error);
           setUser(null);
           localStorage.removeItem('token');
         }
