@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
           const response = await apiClient.get('/users/validate_token', {
             headers: { Authorization: `Bearer ${token}` },
           });
-          console.log(response.data);
+          //console.log(response.data);
           setUser(response.data.user);
           localStorage.setItem('token', token);
         } catch (error) {
