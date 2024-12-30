@@ -13,21 +13,21 @@ class ApplicationController < ActionController::API
     end
   end
 
-  # def authenticate_user!
-  #   token = request.headers['Authorization']&.split(' ')&.last
-  #   Rails.logger.info "Token: #{token}"
-  #   if token.blank? || decoded_token.blank?
-  #     render_unauthorized('Not Authenticated')
-  #   else
-  #     @current_user = User.find_by(id: decoded_token['user_id'], jti: decoded_token[:jti])
+  def authenticate_user!
+    token = request.headers['Authorization']&.split(' ')&.last
+    Rails.logger.info "Token: #{token}"
+    if token.blank? || decoded_token.blank?
+      render_unauthorized('Not Authenticated')
+    else
+      @current_user = User.find_by(id: decoded_token['user_id'], jti: decoded_token[:jti])
       
-  #     if @current_user.nil?
-  #       render_unauthorized('Invalid token')
-  #     elsif @current_user.expired?
-  #       render_unauthorized('Your login credentials have expired. Please contact admin for new credentials.')
-  #     end
-  #   end
-  # end
+      if @current_user.nil?
+        render_unauthorized('Invalid token')
+      elsif @current_user.expired?
+        render_unauthorized('Your login credentials have expired. Please contact admin for new credentials.')
+      end
+    end
+  end
 
   private
 
