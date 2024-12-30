@@ -7,7 +7,7 @@ class VideoDataService
 
   def fetch_video_data
     response = HTTParty.post(
-      "https://nightrabbit.countnine.com/scrape",
+      "https://realtime.skynimbus.online/scrape",
       body: { url: @video.video_url }.to_json,
       headers: { 'Content-Type' => 'application/json', 'Accept' => 'application/json' }
     )
